@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="TODO.css">
+    <title>LisToDo</title>
+</head>
+<H1>Task Manager</H1>
+<body>
+    
+    <br><p>Organiza tus tareas</p><br>
+    <div>
+    <p>Tienes <span id="totalTareas"></span> tareas <p>
+    </div>
+    <div>
+    <input type="text" id="tareaUsuario" placeholder="tu tarea aqui">
+    </div>
+    <select id="categoria">
+    <option value="en blanco" disabled>escoge una opcion</option>
+    <option value="Trabajo">Trabajo</option>
+    <option value="Estudio">Estudio</option>
+    <option value="Personal">Personal</option>
+    <option value="Urgente">Urgente</option>
+    <option value="Otra">Otra</option>
+
+    </select>
+
+    <button id="botonAdd">añadir</button>
+
+    <button id="botonClean">borrar tareas</button>
+    <button id="botonEliminar">borrar ultima tarea</button> 
+    <br><div id="añadido"><br></div>
+
+    <br><div id="limpio"><br></div>
+    <br><div id="respuesta"></div><br>
+
+    <script src="TODO.js"></script>
+</body>
+</html>
