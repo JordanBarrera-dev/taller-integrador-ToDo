@@ -1,21 +1,40 @@
- // codigo del TODO!
 
 
-    let tareaUser = document.getElementById("tareaUsuario")
+
+let tareaUser = document.getElementById("tareaUsuario")
     const botonAdd = document.getElementById("botonAdd")
-    const contenedorTareas = document.getElementById("respuesta")
     const botonClean = document.getElementById("botonClean")
     const botonEliminar = document.getElementById("botonEliminar")
-
-    listaToDo = []
+    const visor = document.getElementById("totalTareas")
+    let contador = 0
+    
+    
+    
+    
+    
+    
     botonAdd.addEventListener("click",function(){
         tareaLimpia =tareaUser.value.trim()
         if (tareaLimpia === ""){
-            alert `ingresa una tarea`
+            alert `ingresa una tarea`   
+
             return
         }
+        
+    
         else{
-         let categoria = document.getElementById("categoria")
+        
+        const listaTarea = document.createElement("li")
+        const btnBorrar = document.createElement("button")
+        const btnHecho = document.createElement("button")
+        const btnUrgente = document.createElement("button")
+        const contenedorTareas = document.getElementById("respuesta")
+
+        btnBorrar.addEventListener("click", function(){
+        listaTarea.remove()
+        })
+
+        let categoria = document.getElementById("categoria")
         let escogida = categoria.value
         let emoji = ""
         switch(escogida){
@@ -34,47 +53,44 @@
             case "Urgente" :
             emoji = "🚨"
             break
-
         }
-        let catYtarea = `${emoji} ${tareaLimpia}`
-        listaToDo.push(catYtarea)
-        document.getElementById("añadido").innerHTML = `tu tarea ${catYtarea} ha sido añadida`
-        tareaUser.value = ""
-        document.getElementById("totalTareas").innerText = listaToDo.length
-        contenedorTareas.innerHTML = ""
-            listaToDo.forEach(element => {
-            contenedorTareas.innerHTML += `<li>${element}</li>`
+
+        listaTarea.innerText = `${emoji} ${tareaLimpia}`
+        btnBorrar.innerText = `eliminar`
+        btnHecho.innerText = `realizado`
+        btnUrgente.innerText = `urgente`
         
-    
-        })
+        btnBorrar.onclick = function(){
+            listaTarea.remove()
+            contador -= 1
+            visor.innerText = contador
+            
         }
-    })   
+        btnHecho.onclick = function(){
+            listaTarea.style.textDecoration = "line-through"
 
-    botonClean.addEventListener("click", function(){
+        }
+        btnUrgente.onclick = function(){
 
-    listaToDo = []
-    contenedorTareas.innerHTML = ""
-    document.getElementById("totalTareas").innerText = "0"
-    document.getElementById("añadido").innerHTML = `tus tareas han sido eliminadas`
-    document.getElementById("añadido").innerHTML = `tus tareas han sido eliminadas`
-    document.getElementById("limpio").innerHTML = `lista impia`
+            listaTarea.clean()
+        }
+        listaTarea.appendChild(btnBorrar)
+        listaTarea.appendChild(btnHecho)
+        listaTarea.appendChild(btnUrgente)
+
+        contenedorTareas.appendChild(listaTarea)
+        
+        contador += 1
+        visor.innerText = contador
+        
+        
+        tareaUser.value = ""
+        
+        }
+        
     })
 
-    botonEliminar.addEventListener("click",function(){
-    if(listaToDo.length < 1){
-        document.getElementById("añadido").innerHTML = `no tienes tareas que eliminar`
-    }
-    else{
-        listaToDo.pop()
-        contenedorTareas.innerHTML = ""
-            listaToDo.forEach(element => {
-            contenedorTareas.innerHTML += `<li>${element}</li>`
-            })
-        document.getElementById("totalTareas").innerText = listaToDo.length
-        document.getElementById("añadido").innerHTML = `tu ultima tarea ha sido eliminada`}
 
-    })
-    
     
 
 

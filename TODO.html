@@ -11,7 +11,7 @@
     
     <br><p>Organiza tus tareas</p><br>
     <div>
-    <p>Tienes <span id="totalTareas"></span> tareas <p>
+    <p>Tienes <span id="totalTareas" value="0">0</span> tareas <p>    
     </div>
     <div>
     <input type="text" id="tareaUsuario" placeholder="tu tarea aqui">
@@ -26,14 +26,13 @@
 
     </select>
 
-    <button id="botonAdd">añadir</button>
-
+    <button id="botonAdd">añadir tarea</button>
     <button id="botonClean">borrar tareas</button>
-    <button id="botonEliminar">borrar ultima tarea</button> 
     <br><div id="añadido"><br></div>
-
+    </li>
     <br><div id="limpio"><br></div>
-    <br><div id="respuesta"></div><br>
+
+    <ul><br><div id="respuesta"></div><br></ul>
 
     <script src="TODO.js"></script>
 </body>
